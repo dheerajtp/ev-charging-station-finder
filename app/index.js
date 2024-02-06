@@ -4,6 +4,7 @@ import styles from "../assets/styles";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
+import { Redirect } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -28,6 +29,7 @@ const App = () => {
 
   return (
     <View style={styles.container} onLayout={onLayoutRootView}>
+        <Redirect href="/login" />
       <StatusBar style="auto" />
       <Text style={styles.text}>Index file</Text>
     </View>
