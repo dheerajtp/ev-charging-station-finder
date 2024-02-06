@@ -5,10 +5,12 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useCallback } from "react";
 import { Redirect } from "expo-router";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
+  console.log(process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY);
   const [fontsLoaded, fontError] = useFonts({
     "Roboto-Black": require("../assets/fonts/Roboto-Black.ttf"),
     "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
@@ -28,11 +30,20 @@ const App = () => {
   }
 
   return (
-    <View style={styles.container} onLayout={onLayoutRootView}>
-        <Redirect href="/login" />
+    <ClerkProvider
+      publishableKey={process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY}
+    >
       <StatusBar style="auto" />
-      <Text style={styles.text}>Index file</Text>
-    </View>
+      <View style={styles.container} onLayout={onLayoutRootView}>
+        <SignedIn>
+          <Text>You are Signed in</Text>
+        </SignedIn>
+        <SignedOut>
+          <Redirect href="/login" />
+        </SignedOut>
+        <Text style={styles.text}>Index file</Text>
+      </View>
+    </ClerkProvider>
   );
 };
 
