@@ -4,32 +4,30 @@ import styles from "../../assets/styles";
 import * as WebBrowser from "expo-web-browser";
 import useWarmUpBrowser from "../../hooks/useWarmUpBrowser";
 import { useOAuth } from "@clerk/clerk-expo";
+import React from "react";
 
 WebBrowser.maybeCompleteAuthSession();
 
 const login = () => {
   useWarmUpBrowser();
-  // const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
 
-  // const onPress = () =>
-  //   React.useCallback(async () => {
-  //     try {
-  //       const { createdSessionId, signIn, signUp, setActive } =
-  //         await startOAuthFlow();
+  const onPress = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
 
-  //       if (createdSessionId) {
-  //         setActive({ session: createdSessionId });
-  //       } else {
-  //         // Use signIn or signUp for next steps such as MFA
-  //       }
-  //     } catch (err) {
-  //       console.error("OAuth error", err);
-  //     }
-  //   }, []);
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+        console.error("login failed");
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
 
-  const onPress = () => {
-    console.warn("on press pressed");
-  };
   return (
     <View style={[styles.container, styles.mtop]}>
       <Image source={images.logo} style={styles.loginLogo} />
