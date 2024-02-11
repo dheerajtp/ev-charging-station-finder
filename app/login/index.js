@@ -1,8 +1,33 @@
 import { Image, Text, TouchableOpacity, View } from "react-native";
 import images from "../../assets/images";
 import styles from "../../assets/styles";
+import * as WebBrowser from "expo-web-browser";
+import useWarmUpBrowser from "../../hooks/useWarmUpBrowser";
+import { useOAuth } from "@clerk/clerk-expo";
+import React from "react";
+
+WebBrowser.maybeCompleteAuthSession();
 
 const login = () => {
+  useWarmUpBrowser();
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+
+  const onPress = React.useCallback(async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+        console.error("login failed");
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
+
   return (
     <View style={[styles.container, styles.mtop]}>
       <Image source={images.logo} style={styles.loginLogo} />
@@ -15,10 +40,7 @@ const login = () => {
           Find EV Charging Station Near You, Plan Trip And So Much More In Just
           One Click
         </Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => console.info("Button Clicked")}
-        >
+        <TouchableOpacity style={styles.button} onPress={onPress}>
           <Text style={styles.buttonColor}>Login with Google</Text>
         </TouchableOpacity>
       </View>
