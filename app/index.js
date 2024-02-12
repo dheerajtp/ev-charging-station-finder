@@ -10,7 +10,6 @@ import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 SplashScreen.preventAutoHideAsync();
 
 const App = () => {
-  console.log(process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY);
   const [fontsLoaded, fontError] = useFonts({
     "Roboto-Black": require("../assets/fonts/Roboto-Black.ttf"),
     "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
@@ -36,7 +35,8 @@ const App = () => {
       <StatusBar style="auto" />
       <View style={styles.container} onLayout={onLayoutRootView}>
         <SignedIn>
-          <Text>You are Signed in</Text>
+          {/* <Text>You are Signed in</Text> */}
+          <Redirect href="/home" />
         </SignedIn>
         <SignedOut>
           <Redirect href="/login" />
