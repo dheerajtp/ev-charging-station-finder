@@ -12,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -33,12 +31,16 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "path/to/file.ttf"
-          ]
+          "fonts": ["path/to/file.ttf"]
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "Allow EV Station App to use your location."
+        }
+      ]
     ]
   }
 }

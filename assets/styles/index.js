@@ -52,6 +52,13 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Regular",
     fontSize: 17,
   },
+  mapContainer: {
+    flex: 1,
+  },
+  map: {
+    width: "100%",
+    height: "100%",
+  },
 });
 
 export default styles;
