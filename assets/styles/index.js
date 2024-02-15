@@ -59,6 +59,34 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
   },
+  loadingMap: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  markerImage: {
+    height: "60px",
+    width: "60px",
+  },
+  headerContainer: {
+    position: "absolute",
+    zIndex: 10,
+    padding: 10,
+    width: "100%",
+    paddingHorizontal: 20,
+  },
+  userLogo: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
+  headerContent: {
+    display:"flex",
+    justifyContent: "space-between",
+    flexDirection:"row",
+    alignItems: "center",
+    backgroundColor:color.WHITE_TRANSPARENT
+  },
 });
 
 export default styles;

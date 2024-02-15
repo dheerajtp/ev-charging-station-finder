@@ -59,5 +59,6 @@ This package can be used for getting user location from the device.
 
 12. [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/usage/)
 
+13. For showing marker we can import Marker from react-native-maps.
 
 
