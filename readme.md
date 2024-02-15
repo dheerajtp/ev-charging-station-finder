@@ -53,5 +53,11 @@ provider={PROVIDER_GOOGLE}
 - To change the default google map style and go to [Map Style With Google Map](https://mapstyle.withgoogle.com/) and select the desired map style and and click on finish after updating the style with desired value. After that copy the JSON format and create a new file in the *utils folder* named **MapViewStyle.json** . And import this custom map style in the MapView component inside customMapStyle. 
 
 
+11. [Expo Location](https://docs.expo.dev/versions/latest/sdk/location/)
+
+This package can be used for getting user location from the device.
+
+12. [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/usage/)
+
 
 
