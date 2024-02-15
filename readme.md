@@ -36,13 +36,11 @@ expo-secure-store provides a way to encrypt and securely store key–value pairs
 
 SignedIn and SignedOut components from clerk can be used to show signed in and signed out contents. In here the user will be redirected into login page if the user isn't signed in. So we will place the redirect logic inside SignedOut Component
 
-
 10. [MapView](https://docs.expo.dev/versions/latest/sdk/map-view/)
 
+while integrating map-view i got encountered an error "Invariant Violation: Tried to register two views with the same name AIRMap, js engine what is this issue ??" and upgrading the project using **expo upgrade** fixed the issue.
 
-while integrating map-view i got encountered an error "Invariant Violation: Tried to register two views with the same name AIRMap, js engine what is this issue ??" and upgrading the project using **expo upgrade** fixed the issue. 
-
-- When integrating the Map component we can either manually tell which provider to be used which is by mentioning the provider in the map view. By default it will take default of mobile os for the map. 
+- When integrating the Map component we can either manually tell which provider to be used which is by mentioning the provider in the map view. By default it will take default of mobile os for the map.
 
 ```
 provider={PROVIDER_GOOGLE}
@@ -50,8 +48,14 @@ provider={PROVIDER_GOOGLE}
 
 - To show user location we can use showsUserLocation={true}
 
-- To change the default google map style and go to [Map Style With Google Map](https://mapstyle.withgoogle.com/) and select the desired map style and and click on finish after updating the style with desired value. After that copy the JSON format and create a new file in the *utils folder* named **MapViewStyle.json** . And import this custom map style in the MapView component inside customMapStyle. 
+- To change the default google map style and go to [Map Style With Google Map](https://mapstyle.withgoogle.com/) and select the desired map style and and click on finish after updating the style with desired value. After that copy the JSON format and create a new file in the _utils folder_ named **MapViewStyle.json** . And import this custom map style in the MapView component inside customMapStyle.
 
+11. [Expo Location](https://docs.expo.dev/versions/latest/sdk/location/)
 
+This package can be used for getting user location from the device.
 
+12. [AsyncStorage](https://react-native-async-storage.github.io/async-storage/docs/usage/)
 
+13. For showing marker we can import Marker from react-native-maps.
+
+14. [react-native-google-places-autocomplete](https://www.npmjs.com/package/react-native-google-places-autocomplete)
