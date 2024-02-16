@@ -6,7 +6,6 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const Header = () => {
   const { user } = useUser();
-  console.log(user, "user");
   return (
     <View style={styles.headerContent}>
       <Image source={{ uri: user?.imageUrl }} style={styles.userLogo} />
