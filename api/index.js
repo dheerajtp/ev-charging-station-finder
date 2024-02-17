@@ -13,15 +13,15 @@ instance.interceptors.response.use(
 );
 
 instance.interceptors.request.use((config) => {
+  config.headers["Content-Type"] = "application/json";
   config.headers["X-Goog-Api-Key"] = GOOGLE_KEY;
   config.headers["X-Goog-FieldMask"] = [
     "places.displayName",
     "places.formattedAddress",
     "places.location",
-    "places.evChargerOptions",
+    "places.evChargeOptions",
     "places.photos",
   ];
-  config.headers["Origin"] = ORIGIN;
   return config;
 });
 

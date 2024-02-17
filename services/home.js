@@ -1,7 +1,10 @@
 import API from "../api";
 
 const getLocations = async (body) => {
-  let response = API.instance.post("", body);
+  console.log(JSON.stringify(body));
+  let response = await API.instance.post(":searchNearby", body);
+  console.log(" === response === ");
+  console.log(response);
   return response;
 };
 
