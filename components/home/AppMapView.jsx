@@ -7,12 +7,13 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addLocation } from "../../state/slices/locationSlice";
 import images from "../../assets/images";
+import Markers from "./Markers";
 
 const AppMapView = () => {
   const dispatch = useDispatch();
   const { value } = useSelector((state) => state.location);
   const [location, setLocation] = useState(value.location);
-
+  console.info(value.evOptions);
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -47,8 +48,11 @@ const AppMapView = () => {
               longitude: location?.longitude,
             }}
           >
-            <Image source={images.currentLocation} style={styles.loginLogo}/>
+            <Image source={images.currentLocation} style={styles.loginLogo} />
           </Marker>
+          {value.evOptions.map((item, index) => {
+            return <Markers key={index} item={item} />;
+          })}
         </MapView>
       </View>
     );

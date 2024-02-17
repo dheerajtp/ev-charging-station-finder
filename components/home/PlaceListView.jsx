@@ -4,8 +4,6 @@ import PlaceListItem from "./PlaceListItem";
 
 const PlaceListView = () => {
   const { evOptions } = useSelector((state) => state.location.value);
-  console.log(useSelector((state) => state.location));
-  console.info(evOptions?.length, "evoptions");
   return (
     <View>
       {evOptions && evOptions.length > 0 && (
@@ -13,6 +11,7 @@ const PlaceListView = () => {
           data={evOptions}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
+          pagingEnabled
           renderItem={({ item, index }) => {
             return (
               <View key={index}>
