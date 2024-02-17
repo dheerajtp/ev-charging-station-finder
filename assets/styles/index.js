@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import color from "../../constants/colors";
 
 const styles = StyleSheet.create({
@@ -81,11 +81,31 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   headerContent: {
-    display:"flex",
+    display: "flex",
     justifyContent: "space-between",
-    flexDirection:"row",
+    flexDirection: "row",
     alignItems: "center",
-    backgroundColor:color.WHITE_TRANSPARENT
+    backgroundColor: color.WHITE_TRANSPARENT,
+  },
+  placeListContainer: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: 10,
+    width: "100%",
+  },
+  evImage: {
+    width: "100%",
+    borderRadius: 10,
+    height: 130,
+  },
+  placeItem: {
+    width: Dimensions.get("screen").width * 0.9,
+    margin: 5,
+    borderRadius: 10,
+    backgroundColor:color.WHITE
+  },
+  placeTextView: {
+    padding: 15,
   },
 });
 

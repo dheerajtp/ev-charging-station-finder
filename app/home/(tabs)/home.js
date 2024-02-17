@@ -5,7 +5,8 @@ import Header from "../../../components/home/Header";
 import SearchBar from "../../../components/home/SearchBar";
 import { useDispatch, useSelector } from "react-redux";
 import useGoogle from "../../../hooks/api/useGoogle";
-import { addLocation } from "../../../state/slices/locationSlice";
+import { addEVOptions, addLocation } from "../../../state/slices/locationSlice";
+import PlaceListView from "../../../components/home/PlaceListView";
 
 const Home = () => {
   const { value } = useSelector((state) => state.location);
@@ -14,7 +15,7 @@ const Home = () => {
 
   const data = {
     includedTypes: ["electric_vehicle_charging_station"],
-    maxResultCount: 10,
+    maxResultCount: 20,
     locationRestriction: {
       circle: {
         center: {
@@ -25,7 +26,7 @@ const Home = () => {
       },
     },
   };
-  
+
   return (
     <View style={styles.mapContainer}>
       <View style={styles.headerContainer}>
@@ -33,11 +34,26 @@ const Home = () => {
         <SearchBar
           searchedLocation={(location) => {
             dispatch(addLocation(location));
-            mutate({ data });
+            mutate(
+              { data },
+              {
+                onSuccess: (data) => {
+                  if (data.status === 200) {
+                    dispatch(addEVOptions(data.data));
+                  }
+                },
+                onError: (error) => {
+                  console.error(error, "error");
+                },
+              }
+            );
           }}
         />
       </View>
       <AppMapView />
+      <View style={styles.placeListContainer}>
+        <PlaceListView />
+      </View>
     </View>
   );
 };
